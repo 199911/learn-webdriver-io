@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "wdio-mocha-framework": "^0.2.12",
     "webdriverio": "^4.0.5"
   }
 }
