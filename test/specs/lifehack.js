@@ -17,11 +17,32 @@ browser.addCommand("scrollToBottom", function (customVar) {
 });
 
 describe('lifehack home page', function() {
-    it('should have Site Top 728 x 90 ad', function () {
-        browser
-            .url('http://sunday.lifehack.org')
-            .waitForVisible('#google_ads_iframe_/1040155/SiteTop728x90_0',5000);
-        var res = browser.isVisible('#google_ads_iframe_/1040155/SiteTop728x90_0');
-        assert.ok(res);
+    this.timeout(60000);
+    it('should have SiteTop728x90_0 ad', function () {
+        browser.url('http://sunday.lifehack.org');
+        browser.waitForVisible('#google_ads_iframe_/1040155/SiteTop728x90_0',5000);
+        assert.ok(
+            browser.isVisible('#google_ads_iframe_/1040155/SiteTop728x90_0')
+        );
+    });
+    it('should have Lifehack_Feed_300x250 ads', function () {
+        // first ad
+        browser.scrollToBottom();
+        browser.waitForVisible('#google_ads_iframe_/1040155/Lifehack_Feed_300x250_0',5000);
+        assert.ok(
+            browser.isVisible('#google_ads_iframe_/1040155/Lifehack_Feed_300x250_0')
+        );
+        // second ad
+        browser.scrollToBottom();
+        browser.waitForVisible('#google_ads_iframe_/1040155/Lifehack_Feed_300x250_1',5000);
+        assert.ok(
+            browser.isVisible('#google_ads_iframe_/1040155/Lifehack_Feed_300x250_1')
+        );
+        // third ad
+        browser.scrollToBottom();
+        browser.waitForVisible('#google_ads_iframe_/1040155/Lifehack_Feed_300x250_2',5000);
+        assert.ok(
+            browser.isVisible('#google_ads_iframe_/1040155/Lifehack_Feed_300x250_2')
+        );
     });
 });
